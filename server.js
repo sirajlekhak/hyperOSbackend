@@ -1,5 +1,4 @@
 import express from 'express';
-import morgan from 'morgan';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import fs from 'fs';
@@ -23,7 +22,6 @@ app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Get directory name
