@@ -18,5 +18,9 @@
     "express-fileupload": "^1.5.1",
     "helmet": "^8.0.0",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/morgan": "^1.9.9"
   }
 }
