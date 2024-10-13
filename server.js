@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 import dotenv from 'dotenv';
 import helmet from 'helmet';
 import fs from 'fs';
@@ -16,6 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
+app.use(morgan('combined'));
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
