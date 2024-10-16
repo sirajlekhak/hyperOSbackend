@@ -6,7 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
-import morgan from 'morgan';
+import morgan from 'morgan';  // Correct import
 
 // Load environment variables
 dotenv.config();
@@ -20,9 +20,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(morgan('combined'));
 app.use(cors());
 app.use(helmet());
+app.use(morgan('dev'));  // Apply the morgan middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
