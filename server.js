@@ -6,10 +6,14 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import fileUpload from 'express-fileupload';
 import cors from 'cors';
-import morgan from 'morgan';
+import morgan from 'morgan';  // Correct import
 
 // Load environment variables
 dotenv.config();
+
+// Fix __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Create Express app
 const app = express();
@@ -18,15 +22,11 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(helmet());
+app.use(morgan('dev'));  // Apply the morgan middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
-app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Get directory name
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Path to your JSON file
 const phonesFilePath = path.join(__dirname, 'public', 'phones.json');
